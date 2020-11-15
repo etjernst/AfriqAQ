@@ -64,7 +64,7 @@
 
 * **********************************************************************
 * Create some sub-folder globals
-    global projectFolder          "$myDocs/AQ"
+    global projectFolder          "$myDocs/AfriqAQ"
     global dataWork               "$projectFolder/dataWork"
 		global config                 "$dataWork/config"
 
