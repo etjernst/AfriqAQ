@@ -26,19 +26,29 @@
   reshape   long                  pm lockdown, i(date_str) j(city)
 
 * Format date variable (and curse thrice at Stata's date format)
-  gen double        date      = clock(date_str,"YMD hms#")
-  format            date      %tcCCYYmonDD_HH:MM
+  gen double        clocktime     = clock(date_str,"YMD hms#")
+  format            clocktime     %tcCCYYmonDD_HH:MM
+
+* Also want a date format
+  gen               date          = dofC(clocktime)
+  gen               day           = day(date + 1)
+                    // +1 because it thinks 00:00 is last year
+  gen               week          = week(date + 1)
+  gen               month         = month(date + 1)
 
   * Label city variable
-  label def          city     1 "Kampala" 2 "Addis" 3 "Kigali" 4 "Nairobi"
-  label val          city     city
+  label def          city         1 "Kampala" 2 "Addis" 3 "Kigali" 4 "Nairobi"
+  label val          city         city
 
 * Label other variables
-  label var        date_str         "Date (string)"
-  label var        date             "Date"
-  label var        city             "City"
-  label var        pm               "PM2.5"
-  label var        lockdown         "Beginning of lockdown"
+  label var        date_str       "Date (string)"
+  label var        date           "Date"
+  label var        city           "City"
+  label var        pm             "PM2.5"
+  label var        lockdown       "Beginning of lockdown"
+  label var        day            "Day of the year"
+  label var        week           "Week of the year"
+  label var        month          "Month of the year"
 
 * **********************************************************************
 * 2 - Generate variables
