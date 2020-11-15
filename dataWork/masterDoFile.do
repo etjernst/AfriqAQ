@@ -16,7 +16,7 @@
 
 * dependencies
 	* for packages/commands, make a local containing any required packages
-        local userpack "blindschemes.sthlp estout reghdfe ftools"
+        local userpack "blindschemes.sthlp estout reghdfe ftools ietoolkit"
 
 * TO DO:
     * Update code with customsave
